@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c881f6d5-57a6-4b92-a5a7-6e0dcbfd0562" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="test_mavenprojFlow" doc:id="84a2429c-8ef3-43e2-b25d-c21b920474d5" >
+		<http:listener doc:name="Listener" doc:id="6b3559b5-84b7-4400-b2d7-a3e617df1867" config-ref="HTTP_Listener_config" path="/test" allowedMethods="GET"/>
+		<set-payload value='Hello' doc:name="Set Payload" doc:id="53cd3a2e-bf64-4c6a-b2a4-5484b0e85181" />
+		<logger level="INFO" doc:name="Logger" doc:id="8835d245-9a09-4393-ae13-22a7348feced" message="Tested"/>
+	</flow>
+</mule>
